@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3">Your Job Applications</h1>
+    <a class="btn btn-primary" href="{% url 'add_job' %}">Add Job</a>
+  </div>
+
+  {% if jobs %}
+    <div class="table-responsive app-card">
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Applied</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for job in jobs %}
+          <tr class="row-highlight">
+            <td>{{ job.company }}</td>
+            <td>{{ job.role }}</td>
+            <td>{{ job.status }}</td>
+            <td>{{ job.application_date }}</td>
+            <td>
+              <a class="btn btn-sm btn-primary" href="{% url 'edit_job' job.pk %}">Edit</a>
+              <a class="btn btn-sm btn-outline btn-danger" href="{% url 'delete_job' job.pk %}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info">No job applications yet. Click <a href="{% url 'add_job' %}">Add Job</a> to create one.</div>
+  {% endif %}
+
+{% endblock %}

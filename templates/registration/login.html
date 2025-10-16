@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="app-card mx-auto" style="max-width:420px;">
+  <h2 class="h4 mb-3">Login</h2>
+  <form method="post">{% csrf_token %}
+    {% if form.errors %}
+      <div class="alert alert-danger">Please correct the errors below.</div>
+    {% endif %}
+
+    <div class="mb-3">
+      <label for="id_username" class="form-label">Username</label>
+      {{ form.username }}
+    </div>
+    <div class="mb-3">
+      <label for="id_password" class="form-label">Password</label>
+      {{ form.password }}
+    </div>
+
+    <button class="btn btn-primary" type="submit">Login</button>
+  </form>
+</div>
+{% endblock %}

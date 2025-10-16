@@ -1,0 +1,28 @@
+Job Application Tracker - Mini SRS
+
+Purpose:
+Provide job seekers a simple, local application to track job applications, statuses, notes, and interview events. Focus on data privacy and input sanitization.
+
+Functional Requirements:
+- User authentication (Django admin / local accounts)
+- CRUD operations for job application records (create, read, update, delete)
+- Fields: company, role, application_date, status, notes
+- Search/filter by company and status
+- Export/import CSV (optional)
+
+Non-Functional Requirements:
+- Use SQLite for local persistence
+- Responsive UI (basic Django templates)
+- Secure input handling to prevent injection and XSS
+- Appropriate logging for auth events
+
+Constraints:
+- Single-node deployment for lab (minikube)
+- No external DB; use SQLite
+- Run in Docker and Kubernetes for lab
+
+Acceptance Criteria:
+- Able to register and login, create and view job entries
+- All user inputs sanitized and displayed safely (no raw HTML rendering)
+- Container builds successfully and app runs at / on port 8000
+- Kubernetes deployment exposes app via Service and pod(s) run
